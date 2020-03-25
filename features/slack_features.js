@@ -3,6 +3,11 @@
  * Licensed under the MIT License.
  */
 const { SlackDialog } = require('botbuilder-adapter-slack');
+const fs = require('fs');
+
+function getBenResponse(){
+    return "ben response";
+}
 
 module.exports = function(controller) {
 
@@ -15,13 +20,15 @@ module.exports = function(controller) {
     });
 
     controller.on('direct_message', async(bot, message) => {
-        await bot.reply(message,'I heard a private message');
+        await bot.reply(message, getBenResponse);
     });
 
+    /*
     controller.hears('dm me', 'message', async(bot, message) => {
         await bot.startPrivateConversation(message.user);
         await bot.say(`Let's talk in private.`);
     });
+    */
 
     controller.on('direct_mention', async(bot, message) => {
         await bot.reply(message, `I heard a direct mention that said "${ message.text }"`);
@@ -42,6 +49,7 @@ module.exports = function(controller) {
         await bot.say('And this should also be in that thread!');
     });
 
+    /*
     controller.hears('blocks', 'message', async(bot, message) => {
 
         await bot.reply(message,{
@@ -131,11 +139,15 @@ module.exports = function(controller) {
         });
 
     });
+    */
 
+    /*
     controller.on('block_actions', async (bot, message) => {
         await bot.reply(message, `Sounds like your choice is ${ message.incoming_message.channelData.actions[0].value }`)
     });
+    */
 
+    /*
     controller.on('slash_command', async(bot, message) => {
         if (message.text === 'plain') {
             await bot.reply(message, 'This is a plain reply');
@@ -149,7 +161,9 @@ module.exports = function(controller) {
         bot.httpBody({text:'You can send an immediate response using bot.httpBody()'});
 
     });
+    */
 
+    /*
     controller.on('interactive_message', async (bot, message) => {
 
         console.log('INTERACTIVE MESSAGE', message);
@@ -176,8 +190,9 @@ module.exports = function(controller) {
                 await bot.reply(message, 'Got a button click!');
         }
     });
+    */
 
-
+    /*
     controller.on('dialog_submission', async (bot, message) => {
         await bot.reply(message, 'Got a dialog submission');
 
@@ -189,9 +204,12 @@ module.exports = function(controller) {
             }
         ])
     });
+    */
 
+    /*
     controller.on('dialog_cancellation', async (bot, message) => {
         await bot.reply(message, 'Got a dialog cancellation');
     });
+    */
 
 }
