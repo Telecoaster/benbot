@@ -32,10 +32,10 @@ const adapter = new SlackAdapter({
 
     // parameters used to secure webhook endpoint
     //verificationToken: process.env.VERIFICATION_TOKEN,
-    clientSigningSecret: "ff47b32acb01d6e999b80263f0e405aa",//process.env.CLIENT_SIGNING_SECRET,  
+    clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,  
 
     // auth token for a single-team app
-    botToken: "xoxb-362345575431-1023014040709-HYer2E1z67NJtV8mqTzJe2qo",//process.env.BOT_TOKEN,
+    botToken: process.env.BOT_TOKEN,
 
     // credentials used to set up oauth for multi-team apps
     //clientId: process.env.CLIENT_ID,
