@@ -35,7 +35,7 @@ const adapter = new SlackAdapter({
     clientSigningSecret: "ff47b32acb01d6e999b80263f0e405aa",//process.env.CLIENT_SIGNING_SECRET,  
 
     // auth token for a single-team app
-    botToken: "xoxb-362345575431-1023014040709-ChC3TeXDFAIG9cK8dIuu3kZz",//process.env.BOT_TOKEN,
+    botToken: "xoxb-362345575431-1023014040709-yB2f6t2Lpn86s2ZwM3EtUm1X",//process.env.BOT_TOKEN,
 
     // credentials used to set up oauth for multi-team apps
     //clientId: process.env.CLIENT_ID,
