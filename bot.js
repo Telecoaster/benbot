@@ -28,7 +28,7 @@ if (process.env.MONGO_URI) {
 
 const adapter = new SlackAdapter({
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    enable_incomplete: flase,
+    enable_incomplete: false,
 
     // parameters used to secure webhook endpoint
     //verificationToken: process.env.VERIFICATION_TOKEN,
