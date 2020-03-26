@@ -8,7 +8,7 @@ const fs = require('fs');
 function getBenResponse(){
     let rawdata = fs.readFileSync(process.cwd() + '/ben_sayings.json');
     let benSayings = JSON.parse(rawdata);
-    return benSayings.sayings[0];//"ben response";
+    return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
 }
 
 module.exports = function(controller) {
