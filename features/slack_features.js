@@ -35,23 +35,27 @@ module.exports = function(controller) {
     */
 
     controller.on('direct_mention', async(bot, message) => {
-        await bot.reply(message, "I heard a direct mention that said " + getBenResponse() );
+        await bot.reply(message, getBenResponse() );
     });
 
     controller.on('mention', async(bot, message) => {
-        await bot.reply(message, `You mentioned me when you said "${ message.text }"`);
+        await bot.reply(message, getBenResponse());
     });
 
+    /*
     controller.hears('ephemeral', 'message,direct_message', async(bot, message) => {
         await bot.replyEphemeral(message,'This is an ephemeral reply sent using bot.replyEphemeral()!');
     });
+    */
 
+    /*
     controller.hears('threaded', 'message,direct_message', async(bot, message) => {
         await bot.replyInThread(message,'This is a reply in a thread!');
 
         await bot.startConversationInThread(message.channel, message.user, message.incoming_message.channelData.ts);
         await bot.say('And this should also be in that thread!');
     });
+    */
 
     /*
     controller.hears('blocks', 'message', async(bot, message) => {
