@@ -6,7 +6,9 @@ const { SlackDialog } = require('botbuilder-adapter-slack');
 const fs = require('fs');
 
 function getBenResponse(){
-    return "ben response";
+    let rawdata = fs.readFileSync(process.cwd() + '/ben_sayings.json');
+    let benSayings = JSON.parse(rawdata);
+    return benSayings.sayings[0];//"ben response";
 }
 
 module.exports = function(controller) {
