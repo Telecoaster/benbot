@@ -21,6 +21,18 @@ module.exports = function(controller) {
         }
     });
 
+
+    controller.on('direct_mention', async(bot, message) => {
+        await bot.reply(message, getBenResponse() );
+    });
+
+    controller.on('mention', async(bot, message) => {
+        if(message.text.includes("?"))
+           await bot.reply(message, "you asked a question");
+        else
+            await bot.reply(message, getBenResponse());
+    });
+
     /*
     controller.on('direct_message', async(bot, message) => {
         await bot.reply(message, getBenResponse);
@@ -33,17 +45,6 @@ module.exports = function(controller) {
         await bot.say(`Let's talk in private.`);
     });
     */
-
-    controller.on('direct_mention', async(bot, message) => {
-        await bot.reply(message, getBenResponse() );
-    });
-
-    controller.on('mention', async(bot, message) => {
-        //if(message.text.includes("?"))
-        //    await bot.reply(message, "you asked a question");
-        //else
-            await bot.reply(message, getBenResponse());
-    });
 
     /*
     controller.hears('ephemeral', 'message,direct_message', async(bot, message) => {
