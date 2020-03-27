@@ -39,9 +39,9 @@ module.exports = function(controller) {
     });
 
     controller.on('mention', async(bot, message) => {
-        if(message.text.includes("?"))
-            await bot.reply(message, "you asked a question");
-        else
+        //if(message.text.includes("?"))
+        //    await bot.reply(message, "you asked a question");
+        //else
             await bot.reply(message, getBenResponse());
     });
 
