@@ -28,7 +28,7 @@ module.exports = function(controller) {
 
     controller.on('mention', async(bot, message) => {
         if(message.text.includes("?"))
-           await bot.reply(message, "you asked a question");
+           await bot.reply(message, `Let me google that for you:  https://google.ca/search?q=${ message.text }`);
         else
             await bot.reply(message, getBenResponse());
     });
