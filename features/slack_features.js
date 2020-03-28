@@ -23,14 +23,17 @@ module.exports = function(controller) {
 
 
     controller.on('direct_mention', async(bot, message) => {
-        await bot.reply(message, getBenResponse() );
+        if(message.text.includes("?")){
+            message.text.replace('@benbot', '');
+            await bot.reply(message, `Let me google that for you:  https://google.ca/search?q=${ encodeURI(message.text) }`);
+        }
+        else{
+            await bot.reply(message, getBenResponse() );
+        }
     });
 
     controller.on('mention', async(bot, message) => {
-        if(message.text.includes("?"))
-           await bot.reply(message, `Let me google that for you:  https://google.ca/search?q=${ message.text }`);
-        else
-            await bot.reply(message, getBenResponse());
+        await bot.reply(message, getBenResponse());
     });
 
     /*
