@@ -25,7 +25,7 @@ module.exports = function(controller) {
     controller.on('direct_mention', async(bot, message) => {
         if(message.text.includes("?")){
             message.text.replace('@benbot', '');
-            await bot.reply(message, `Let me google that for you:  https://google.ca/search?q=${ encodeURI(message.text) }`);
+            await bot.reply(message, `Let me google that for you:  https://google.ca/search?q=${ encodeURIComponent(message.text) }`);
         }
         else{
             await bot.reply(message, getBenResponse() );
