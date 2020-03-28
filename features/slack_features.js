@@ -33,7 +33,12 @@ module.exports = function(controller) {
     });
 
     controller.on('mention', async(bot, message) => {
-        await bot.reply(message, getBenResponse());
+        if(message.text.includes("oh @benbot")){
+            await bot.reply(message, ":ben-of-the-rings:");
+        }
+        else{
+            await bot.reply(message, getBenResponse());
+        }
     });
 
     /*
