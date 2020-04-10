@@ -27,6 +27,9 @@ module.exports = function(controller) {
             message.text.replace('@benbot', '');
             await bot.reply(message, `Let me google that for you:  https://stackexchange.com/search?q=${ encodeURIComponent(message.text) }`);
         }
+        else if(message.text.includes("play me a song)"){
+            await bot.reply(message, `I wrote this for you ${ message.user }: http://tones.wolfram.com/` );
+        }
         else{
             await bot.reply(message, getBenResponse() );
         }
