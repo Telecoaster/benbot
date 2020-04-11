@@ -4,6 +4,7 @@
  */
 const { SlackDialog } = require('botbuilder-adapter-slack');
 const fs = require('fs');
+const Request = require("request");
 
 function getBenResponse(){
     let rawdata = fs.readFileSync(process.cwd() + '/ben_sayings.json');
@@ -33,15 +34,17 @@ module.exports = function(controller) {
             let cityid = "6094817";
             let apikey = "c799fe4913d1305146de04c0c0a72c83";
             let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
-            var Request = require("request");
+            //var Request = require("request");
 
             Request.get(apiURI, (error, response, body) => {
                 if(error) {
                     return console.dir(error);
                 }
                 let weatherJSON = JSON.parse(body);
-                await bot.reply(message, `The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin` );
+                //await bot.reply(message, `The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin` );
+               
             });
+            await bot.reply(message, "test");
         }else{
             await bot.reply(message, getBenResponse() );
         }
