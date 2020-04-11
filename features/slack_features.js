@@ -51,12 +51,12 @@ module.exports = function(controller) {
         else if(message.text.includes("song")){
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
-            /*
+            let theWeather = "test3";
             getWeather(function(weatherText){
 
-                await bot.reply(message, weatherText);
-            });*/
-            await bot.reply(message, "test2");
+                theWeather = weatherText;
+            });
+            await bot.reply(message, theWeather);
             
         }else{
             await bot.reply(message, getBenResponse() );
