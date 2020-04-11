@@ -24,6 +24,8 @@ module.exports = function(controller) {
 
 
     controller.on('direct_mention', async(bot, message) => {
+        var weatherJSON = "";
+
         if(message.text.includes("?")){
             message.text.replace('@benbot', '');
             await bot.reply(message, `Let me google that for you:  https://stackexchange.com/search?q=${ encodeURIComponent(message.text) }`);
@@ -39,11 +41,11 @@ module.exports = function(controller) {
                 if(error) {
                     return console.dir(error);
                 }
-            //    var weatherJSON = JSON.parse(body);
+                weatherJSON = JSON.parse(body);
                 //await bot.reply(message, `The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin` );
                 //await bot.reply(message, "test1");
             });
-            await bot.reply(message, "test3");
+            await bot.reply(message, "test5");
         }else{
             await bot.reply(message, getBenResponse() );
         }
