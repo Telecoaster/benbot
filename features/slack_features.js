@@ -5,11 +5,28 @@
 const { SlackDialog } = require('botbuilder-adapter-slack');
 const fs = require('fs');
 const Request = require("request");
+var weatherJSON; 
 
 function getBenResponse(){
     let rawdata = fs.readFileSync(process.cwd() + '/ben_sayings.json');
     let benSayings = JSON.parse(rawdata);
     return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
+}
+
+async function getWeather(callback){
+    let cityid = "6094817";
+    let apikey = "c799fe4913d1305146de04c0c0a72c83";
+    let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
+
+    Request.get(apiURI, (error, response, body) => {
+        if(error) {
+            callback("It's cold");
+        }
+        weatherJSON = JSON.parse(body);
+        callback(`The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin`);
+       
+    });
+
 }
 
 module.exports = function(controller) {
@@ -33,19 +50,11 @@ module.exports = function(controller) {
         else if(message.text.includes("song")){
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
-            let cityid = "6094817";
-            let apikey = "c799fe4913d1305146de04c0c0a72c83";
-            let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
+            getWeather(function(weatherText){
 
-            Request.get(apiURI, (error, response, body) => {
-                if(error) {
-                    return console.dir(error);
-                }
-                weatherJSON = JSON.parse(body);
-                //await bot.reply(message, `The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin` );
-                await bot.reply(message, "test1");
+                await bot.reply(message, weatherText);
             });
-            //await bot.reply(message, weatherJSON.name);
+            
         }else{
             await bot.reply(message, getBenResponse() );
         }
