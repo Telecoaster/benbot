@@ -32,18 +32,18 @@ module.exports = function(controller) {
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
             var weatherJSON = "test4";
-/*
+
             let cityid = "6094817";
             let apikey = "c799fe4913d1305146de04c0c0a72c83";
             let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
         
             Request.get(apiURI, (error, response, body) => {
                 if(error) {
-                    //callback("It's cold");
+                    return console.log(error);
                 }
-                weatherJSON = await JSON.parse(body);
+                weatherJSON = JSON.parse(body);
              
-            });*/
+            });
             await bot.reply(message, weatherJSON);
             
         }else{
