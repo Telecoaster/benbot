@@ -13,6 +13,7 @@ function getBenResponse(){
     return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
 }
 
+/*
 function getWeather(callback){
     let cityid = "6094817";
     let apikey = "c799fe4913d1305146de04c0c0a72c83";
@@ -27,7 +28,7 @@ function getWeather(callback){
        
     });
 
-}
+}*/
 
 module.exports = function(controller) {
 
@@ -50,10 +51,12 @@ module.exports = function(controller) {
         else if(message.text.includes("song")){
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
+            /*
             getWeather(function(weatherText){
 
                 await bot.reply(message, weatherText);
-            });
+            });*/
+            await bot.reply(message, "test");
             
         }else{
             await bot.reply(message, getBenResponse() );
