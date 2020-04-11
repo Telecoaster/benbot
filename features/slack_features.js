@@ -5,7 +5,7 @@
 const { SlackDialog } = require('botbuilder-adapter-slack');
 const fs = require('fs');
 const Request = require("request");
-var weatherJSON; 
+//var weatherJSON; 
 
 function getBenResponse(){
     let rawdata = fs.readFileSync(process.cwd() + '/ben_sayings.json');
@@ -13,7 +13,7 @@ function getBenResponse(){
     return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
 }
 
-async function getWeather(callback){
+function getWeather(callback){
     let cityid = "6094817";
     let apikey = "c799fe4913d1305146de04c0c0a72c83";
     let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
@@ -22,7 +22,7 @@ async function getWeather(callback){
         if(error) {
             callback("It's cold");
         }
-        weatherJSON = JSON.parse(body);
+        let weatherJSON = JSON.parse(body);
         callback(`The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin`);
        
     });
