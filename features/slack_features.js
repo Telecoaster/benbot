@@ -44,7 +44,7 @@ module.exports = function(controller) {
                 weatherJSON = JSON.parse(body);
              
             });
-            await bot.reply(message, weatherJSON);
+            setTimeout(await bot.reply(message, weatherJSON), 2000);
             
         }else{
             await bot.reply(message, getBenResponse() );
