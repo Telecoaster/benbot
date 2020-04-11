@@ -55,8 +55,9 @@ module.exports = function(controller) {
             getWeather(function(weatherText){
 
                 theWeather = weatherText;
+                await bot.reply(message, theWeather);
             });
-            await bot.reply(message, theWeather);
+            
             
         }else{
             await bot.reply(message, getBenResponse() );
