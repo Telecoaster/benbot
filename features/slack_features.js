@@ -31,8 +31,8 @@ module.exports = function(controller) {
         else if(message.text.includes("song")){
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
-            var weatherJSON = "test4";
-
+            var weatherJSON = "It's probably raining";
+            /*
             let cityid = "6094817";
             let apikey = "c799fe4913d1305146de04c0c0a72c83";
             let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
@@ -43,8 +43,8 @@ module.exports = function(controller) {
                 }
                 weatherJSON = JSON.parse(body);
              
-            });
-            setTimeout(await bot.reply(message, weatherJSON), 2000);
+            });*/
+            await bot.reply(message, weatherJSON);
             
         }else{
             await bot.reply(message, getBenResponse() );
