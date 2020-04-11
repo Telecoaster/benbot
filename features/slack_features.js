@@ -24,8 +24,6 @@ module.exports = function(controller) {
 
 
     controller.on('direct_mention', async(bot, message) => {
-        var weatherJSON = "";
-
         if(message.text.includes("?")){
             message.text.replace('@benbot', '');
             await bot.reply(message, `Let me google that for you:  https://stackexchange.com/search?q=${ encodeURIComponent(message.text) }`);
