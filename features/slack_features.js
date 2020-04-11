@@ -13,7 +13,7 @@ function getBenResponse(){
     return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
 }
 
-/*
+
 function getWeather(callback){
     let cityid = "6094817";
     let apikey = "c799fe4913d1305146de04c0c0a72c83";
@@ -28,7 +28,7 @@ function getWeather(callback){
        
     });
 
-}*/
+}
 
 module.exports = function(controller) {
 
@@ -56,7 +56,7 @@ module.exports = function(controller) {
 
                 await bot.reply(message, weatherText);
             });*/
-            await bot.reply(message, "test");
+            await bot.reply(message, "test2");
             
         }else{
             await bot.reply(message, getBenResponse() );
