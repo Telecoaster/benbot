@@ -28,7 +28,7 @@ module.exports = function(controller) {
             await bot.reply(message, `Let me google that for you:  https://stackexchange.com/search?q=${ encodeURIComponent(message.text) }`);
         }
         else if(message.text.includes("play me a song")){
-            await bot.reply(message, `I wrote this for you ${ message.user.text }: http://tones.wolfram.com/` );
+            await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }
         else{
             await bot.reply(message, getBenResponse() );
