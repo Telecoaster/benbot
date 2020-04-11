@@ -35,15 +35,15 @@ module.exports = function(controller) {
             let apikey = "c799fe4913d1305146de04c0c0a72c83";
             let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
 
-            //Request.get(apiURI, (error, response, body) => {
-            //    if(error) {
-            //        return console.dir(error);
-            //    }
+            Request.get(apiURI, (error, response, body) => {
+                if(error) {
+                    return console.dir(error);
+                }
             //    var weatherJSON = JSON.parse(body);
                 //await bot.reply(message, `The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin` );
                 //await bot.reply(message, "test1");
-            //});
-            await bot.reply(message, "test2");
+            });
+            await bot.reply(message, "test3");
         }else{
             await bot.reply(message, getBenResponse() );
         }
