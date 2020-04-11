@@ -40,7 +40,7 @@ module.exports = function(controller) {
                     return console.dir(error);
                 }
                 let weatherJSON = JSON.parse(body);
-                console.log(`The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin`);
+                await bot.reply(message, `The temperature in ${ weatherJSON.name } is currently ${ weatherJSON.main.temp } degrees kelvin` );
             });
         }else{
             await bot.reply(message, getBenResponse() );
