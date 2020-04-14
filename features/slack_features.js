@@ -12,7 +12,7 @@ function getBenResponse(){
     return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
 }
 
-async function getWeather(callback){
+async function getWeather(){
     var weatherJSON = "It's probably raining";
             
     let cityid = "6094817";
@@ -24,7 +24,8 @@ async function getWeather(callback){
             return console.log(error);
         }
         weatherJSON = JSON.parse(body);
-        callback(weatherJSON);
+        return weatherJSON;
+        //callback(weatherJSON);
      
     });
 }
@@ -49,7 +50,8 @@ module.exports = function(controller) {
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
             //getWeather(function(weatherText){
-                await bot.reply(message, "It's probably raining");
+                let weather = await getWeather();
+                await bot.reply(message, weather);
             //});
             
         }else{
