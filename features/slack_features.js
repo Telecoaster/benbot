@@ -48,9 +48,9 @@ module.exports = function(controller) {
         else if(message.text.includes("song")){
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
-            getWeather(function(weatherText){
+            //getWeather(function(weatherText){
                 await bot.reply(message, "It's probably raining");
-            });
+            //});
             
         }else{
             await bot.reply(message, getBenResponse() );
