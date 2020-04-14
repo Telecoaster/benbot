@@ -24,7 +24,7 @@ async function getWeather(theBot, theMessage){
             return console.log(error);
         }
         weatherJSON = JSON.parse(body);
-        theBot.reply(theMessage, weatherJSON.name);
+        await theBot.reply(theMessage, weatherJSON.name);
         //return weatherJSON;
         //callback(weatherJSON);
      
@@ -50,11 +50,9 @@ module.exports = function(controller) {
         else if(message.text.includes("song")){
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
-            //getWeather(function(weatherText){
-                //let weather = await getWeather();
-                
-                await getWeather(bot, message);
-            //});
+
+                //await getWeather(bot, message);
+                await bot.reply(message, "It's probably raining" );
             
         }else{
             await bot.reply(message, getBenResponse() );
