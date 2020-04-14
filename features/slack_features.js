@@ -12,6 +12,7 @@ function getBenResponse(){
     return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
 }
 
+/*
 async function getWeather(theBot, theMessage){
     var weatherJSON = "It's probably raining";
             
@@ -29,7 +30,7 @@ async function getWeather(theBot, theMessage){
         //callback(weatherJSON);
      
     });
-}
+}*/
 
 module.exports = function(controller) {
 
@@ -51,8 +52,8 @@ module.exports = function(controller) {
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
 
-                //await getWeather(bot, message);
-                await bot.reply(message, "It's probably raining" );
+            //await getWeather(bot, message);
+            await bot.reply(message, "It's probably raining" );
             
         }else{
             await bot.reply(message, getBenResponse() );
