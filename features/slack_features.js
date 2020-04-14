@@ -12,19 +12,20 @@ function getBenResponse(){
     return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
 }
 
-async function getWeather(){
+async function getWeather(theBot, theMessage){
     var weatherJSON = "It's probably raining";
             
     let cityid = "6094817";
     let apikey = "c799fe4913d1305146de04c0c0a72c83";
     let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
 
-    return Request.get(apiURI, (error, response, body) => {
+    Request.get(apiURI, (error, response, body) => {
         if(error) {
             return console.log(error);
         }
         weatherJSON = JSON.parse(body);
-        return weatherJSON;
+        theBot.reply(theMessage, weatherJSON.name);
+        //return weatherJSON;
         //callback(weatherJSON);
      
     });
@@ -50,8 +51,9 @@ module.exports = function(controller) {
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
             //getWeather(function(weatherText){
-                let weather = await getWeather();
-                await bot.reply(message, weather);
+                //let weather = await getWeather();
+                
+                await getWeather(bot, message);
             //});
             
         }else{
