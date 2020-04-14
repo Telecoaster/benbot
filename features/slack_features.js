@@ -12,6 +12,23 @@ function getBenResponse(){
     return benSayings.sayings[Math.floor(Math.random() * benSayings.sayings.length)];
 }
 
+async function getWeather(callback){
+    var weatherJSON = "It's probably raining";
+            
+    let cityid = "6094817";
+    let apikey = "c799fe4913d1305146de04c0c0a72c83";
+    let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
+
+    Request.get(apiURI, (error, response, body) => {
+        if(error) {
+            return console.log(error);
+        }
+        weatherJSON = JSON.parse(body);
+        callback(weatherJSON);
+     
+    });
+}
+
 module.exports = function(controller) {
 
     controller.ready(async () => {
@@ -31,20 +48,9 @@ module.exports = function(controller) {
         else if(message.text.includes("song")){
             await bot.reply(message, `I wrote this for you: http://tones.wolfram.com/` );
         }else if(message.text.includes("weather")){
-            var weatherJSON = "It's probably raining";
-            /*
-            let cityid = "6094817";
-            let apikey = "c799fe4913d1305146de04c0c0a72c83";
-            let apiURI = `http://api.openweathermap.org/data/2.5/weather?id=${ cityid }&appid=${ apikey }`; 
-        
-            Request.get(apiURI, (error, response, body) => {
-                if(error) {
-                    return console.log(error);
-                }
-                weatherJSON = JSON.parse(body);
-             
-            });*/
-            await bot.reply(message, weatherJSON);
+            await getWeather(function(weatherText){
+                bot.reply(message, weatherText);
+            });
             
         }else{
             await bot.reply(message, getBenResponse() );
